@@ -1,4 +1,5 @@
 #include <vector>
+#include <string>
 using namespace std;
 
 
@@ -37,5 +38,17 @@ public:
 			}
 		}
 		return false;
+	}
+};
+
+
+class Crossing {
+public:
+	string type; /*nodes located at T junctions need a crossing to identify which 2 of the 3 edges connected to the node
+				 are the same road. These 'crossings' are really just the uninterupted pavements opposite the junction.
+				 valid values for this variable are 'pavement' for these simple connections, 'zebra' for zebra crossings, and
+				 'light' for crossings with traffic lights.*/
+	Crossing(string type1) {
+		type = type1;
 	}
 };
