@@ -3,23 +3,21 @@
     color: white;
 }
 
-#WelcomeCard{
+/* =============================================== */
+/*                  INITIAL PAGE                   */
+/* =============================================== */
+/*.WelcomeCard{
     width:100%;
     max-width:700px;
     text-align: center;
     display:flex;
     flex-direction:column;
     align-items:center;
-    padding-top:120px;
-}
-
-#ButtonStuff {
-
-}
+}*/
 
 body {
     background-image: linear-gradient(to right, #3494E6, #EC6EAD);
-    font: 12px;
+    font-size: 16px;
     align-items: center;
     justify-content: center;
     margin: 0;
@@ -48,7 +46,7 @@ h1{
     background: rgb(255,255,255,0.2);
 }
 
-#GuestButton{
+.smallBtn{
     text-align:center;
     margin-top:18px;
     font-size: 12px;
@@ -56,6 +54,60 @@ h1{
     cursor:pointer;
 }
 
-#GuestButton:hover{
+.smallBtn:hover{
     text-decoration:underline;
+}
+
+/* ==================================================== */
+/*                       LOGIN PAGE                     */
+/* ==================================================== */
+
+/*.LoginCard {
+    border:none;
+    border-bottom: 2px solid white;
+    background:transparent;
+    padding 10px 4px;
+    outline: none;
+    font-size: 16px;
+}*/
+
+#loginDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 20px;
+}
+
+#loginDetails label{
+    text-align: left;
+    font-size: 14px;
+}
+
+#loginDetails input{
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+    font-size: 15px;
+    background: transparent;
+
+    width:80%;
+    padding:8px 4px;
+}
+
+#loginDetails input:focus{
+    border-bottom: 3px solid white;
+}
+
+#loginBtn{
+    width: 120px;
+    height: 40px;
+    margin: 25px auto 0;
+    background: none;
+    border: 3px solid white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#loginBtn:hover{
+    background: rgba(0,0,0,0.05);
 }
