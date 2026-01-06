@@ -31,11 +31,6 @@ function checkLogin(userInput, passInput) {
     return (saved.username === userInput || saved.email === userInput.toLowerCase()) && saved.password === passInput;
 }
 
-// ============================================================
-//                       INITIALISATION
-// ============================================================
-
-
 
 // ============================================================
 //                      PAGE DEFINITIONS
@@ -92,29 +87,42 @@ function changePage(page) {
                     const userInput = document.getElementById("usernameInput").value;
                     const passInput = document.getElementById("passwordInput").value;
 
-                    let userIssues = document.getElementById("userIssues").value;
-                    let passIssues = document.getElementById("passIssues").value;
+                    let userIssues = document.getElementById("userIssues");
+                    let passIssues = document.getElementById("passIssues");
 
-                    if (checkLogin(userInput, passInput)) {
-                        changePage("mainpage");
+                    let errorHere = false;
 
+                    if (userInput == '') {
+                        userIssues.innerHTML = `This field cannot be empty.`;
+                        errorHere = true;
                     } else {
-                        if (userInput == '') {
-                            userIssues = `This field cannot be empty.`;
-                        } else {
-                            userIssues = ``;
-                        }
+                        userIssues.innerHTML = ``;
+                    }
 
-                        if (passIssues == '') {
-                            passIssues = `This field cannot be empty.`;
-                        } else {
-                            passIssues = ``;
-                        }
+                    if (passInput == '') {
+                        passIssues.innerHTML = `This field cannot be empty.`;
+                        errorHere = true;
+                    } else {
+                        passIssues.innerHTML = ``;
+                    }
 
-                        if ((userInput != '') && (passInput != '')) {
-                            passIssues = `Incorrect username/email or password.`
+                    if ((userInput != '') && (passInput != '')) {
+                        passIssues.innerHTML = `Incorrect username/email or password.`
+                        errorHere = true;
+                    } else {
+                        passIssues.innerHTML = ``;
+                    }
+
+                    if (!errorHere) {
+                        if (checkLogin(userInput, passInput)) {
+                            changePage("mainpage");
+
+                        } else {
+                            passIssues.innerHTML = `Incorrect username/email or password.`;
                         }
                     }
+                        
+                   
                 });
             }
         break;
@@ -170,39 +178,51 @@ function changePage(page) {
                 registerEntryBtn.addEventListener("click", (r) => {
                     r.preventDefault();
 
+                    let errorHere = false;
+
                     // CHECKS FOR ERRORS
-                    if ((passwordInputReg.value == confirmPasswordInputReg.value) && (usernameInputReg.value != "") && (passwordInputReg.value != "") && (confirmPasswordInputReg.value != "") && (emailInputReg.value != "")) {
-
-                        // IF NO ERRORS, SAVES CURRENT INPUTS
-                        username = usernameInputReg.value;
-                        email = emailInputReg.value.toLowerCase();
-                        password = passwordInputReg.value;
-                        saveLoginState();
-
-                        changePage("mainpage")
-
-                    }
-                    if (passwordInputReg.value != confirmPasswordInputReg.value) {
-                        passwordIssues.innerHTML = `Your passwords do not match!`;
-                    } else {
-                        passwordIssues.innerHTML = ``;
-                    }
                     if (usernameInputReg.value == "") {
                         usernameIssues.innerHTML = `Your username input is empty!`;
+                        errorHere = true;
+                    } else if (usernameInputReg.value.length < 3) {
+                        usernameIssues.innerHTML = `Your username cannot be less than 3 characters long!`
+                        errorHere = true;
                     } else {
                         usernameIssues.innerHTML = ``;
                     }
 
+                    if (emailInputReg.value == "") {
+                        emailIssues.innerHTML = `Your email input is empty!`;
+                        errorHere = true;
+                    } else if (!emailInputReg.value.includes("@")) {
+                        emailIssues.innerHTML = `Please enter a valid email!`
+                        errorHere = true;
+                    } else {
+                        emailIssues.innerHTML = ``;
+                    }
+
                     if (passwordInputReg.value == "") {
                         passwordIssues.innerHTML = `Your password input is empty!`;
+                        errorHere = true;
+                    } else if (passwordInputReg.value.length < 8) {
+                        passwordIssues.innerHTML = `Your password cannot be less than 8 characters long!`;
+                        errorHere = true;
+                    } else if (passwordInputReg.value != confirmPasswordInputReg.value) {
+                        passwordIssues.innerHTML = `Your passwords do not match!`;
+                        errorHere = true;
                     } else {
                         passwordIssues.innerHTML = ``;
                     }
 
-                    if (emailInputReg.value == "") {
-                        emailIssues.innerHTML = `Your email input is empty!`;
-                    } else {
-                        emailIssues.innerHTML = ``;
+                    // IF NO ERRORS, SAVES CURRENT INPUTS
+                    if (!errorHere) {
+                        username = usernameInputReg.value;
+                        email = emailInputReg.value.toLowerCase();
+                        password = passwordInputReg.value;
+
+                        saveLoginState();
+
+                        changePage("mainpage");
                     }
 
                 });
