@@ -29,3 +29,5 @@ bool Edge::isEqualTo(Edge other) {
 	}
 	return false;
 };
+
+Crossing::Crossing(vector<int> pos, string t) : position(pos), type(t) {}
