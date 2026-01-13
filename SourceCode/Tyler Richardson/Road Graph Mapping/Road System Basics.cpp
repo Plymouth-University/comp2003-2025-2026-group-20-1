@@ -4,9 +4,6 @@
 using namespace std;
 
 
-
-
-
 bool Node::isEqualTo(Node other)
 {
 	if (position == other.position) {

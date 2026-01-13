@@ -14,7 +14,7 @@ public:
 
 class RoadMap {
 public:
-	vector<vector<Tile>> map;
 	RoadMap(int width, int height);
+	vector<vector<Tile>> map;
 	static void drawEdgeOnMap(RoadMap& roadMap, Edge edge);
 };

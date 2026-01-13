@@ -4,10 +4,12 @@
 #include <algorithm> // for min/max
 #include <cstdlib>   // for abs
 #include "Map Generation.h"
-#include "Road System Basics.h"
 using namespace std;
 
 
+RoadMap::RoadMap(int width, int height) {
+        map = vector<vector<Tile>>(height, vector<Tile>(width, Tile("empty")));
+    }
 
 
 void RoadMap::drawEdgeOnMap(RoadMap& roadMap, Edge edge) {
@@ -48,6 +50,3 @@ void RoadMap::drawEdgeOnMap(RoadMap& roadMap, Edge edge) {
         }
     };
 
-RoadMap::RoadMap(int width, int height) {
-        map = vector<vector<Tile>>(height, vector<Tile>(width, Tile("empty")));
-    }
