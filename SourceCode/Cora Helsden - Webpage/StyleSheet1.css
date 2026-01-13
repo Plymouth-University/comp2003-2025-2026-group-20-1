@@ -1,0 +1,107 @@
+﻿* {
+    font-family: Helvetica, Arial, sans-serif;
+    color: white;
+}
+
+body {
+    background-image: linear-gradient(to right, #3494E6, #EC6EAD);
+    font-size: 16px;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    display: flex;
+    height: 100vh;
+}
+
+/* =============================================== */
+/*                  INITIAL PAGE                   */
+/* =============================================== */
+
+
+h1{
+    margin-bottom:100px;
+    letter-spacing:2px;
+    text-align: center;
+}
+
+.btn{
+    width:60%;
+    padding:22px 10px;
+    margin: 10px auto;
+    display: block;
+    border: 2px solid white;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor:pointer;
+    background: none;
+}
+
+.btn:hover{
+    background: rgb(255,255,255,0.2);
+}
+
+.smallBtn{
+    text-align:center;
+    margin-top:18px;
+    font-size: 12px;
+    color: white;
+    cursor:pointer;
+}
+
+.smallBtn:hover{
+    text-decoration:underline;
+}
+
+/* ==================================================== */
+/*                LOGIN AND REGISTER PAGE               */
+/* ==================================================== */
+
+.LoginCard, .RegisterCard{
+    width: 420px;
+    margin: 0 auto;
+}
+
+#loginDetails, #registerDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 20px;
+}
+
+#loginDetails label, #registerDetails label{
+    text-align: left;
+    font-size: 14px;
+}
+
+#loginDetails input, #registerDetails input{
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+    font-size: 15px;
+    background: transparent;
+
+    width:100%;
+    padding:8px 4px;
+}
+
+#loginDetails input:focus, registerDetails input:focus{
+    border-bottom: 3px solid white;
+}
+
+#loginBtn, #registerBtn{
+    width: 120px;
+    height: 40px;
+    margin: 25px auto 0;
+    background: none;
+    border: 3px solid white;
+    border-radius: 8px;
+    cursor: pointer;
+
+    align-items: center;
+    justify-content: center;
+    text-align: center
+}
+
+#loginBtn:hover, #registerBtn:hover{
+    background: rgba(0,0,0,0.05);
+}
