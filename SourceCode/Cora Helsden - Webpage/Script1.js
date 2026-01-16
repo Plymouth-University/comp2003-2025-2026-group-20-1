@@ -266,12 +266,77 @@ function changePage(page) {
                         </div>
                     </section>
                 </div>
-
-                <p class="smallBtn" id="back">Back</p>
             `;
             break;
 
         case 'statspage':
+            document.title = "Statistics Page | Crossing Danger Analysis";
+
+            contentPage.innerHTML = `
+                <div class="pageLayout">
+                    <aside class="taskbar">
+                        <button class="iconBtn" id="homeIcon"></button>
+                        <button class="iconBtn" id="statsIcon"></button>
+                        <button class="iconBtn" id="settingsIcon"></button>
+
+                        <div class="taskbarSpaceImplementer"></div>
+
+                        <button class="iconBtn" id="accountIcon"></button>
+                    </aside>
+
+                    <section class="actualContent">
+                        <div class="statsFullPage">
+                            <div class="settingsContainer">
+                                <div class="settingsHeader">STATISTICS</div>
+
+                                <div class="settingsSection">
+                                    <div class="sectionHeader">CROSSING ANALYSIS</div>
+
+                                    <div class="statItem">
+                                        <span class="statLabel">Totale Crossings Analysed:</span>
+                                        <span class="statValue"></span>
+                                    </div>
+
+                                    <div class="statItem">
+                                        <span class="statLabel">Danger Zones Identified:</span>
+                                        <span class="statValue"></span>
+                                    </div>
+
+                                    <div class="statItem">
+                                        <span class="statLabel">Warning Zones Identified:</span>
+                                        <span class="statValue"></span>
+                                    </div>
+
+                                    <div class="statItem">
+                                        <span class="statLabel">Safe Zones Identified:</span>
+                                        <span class="statValue"></span>
+                                    </div>
+
+                                </div>
+
+                                <div class="settingsSection">
+                                    <div class="sectionHeader">INCIDENTS</div>
+
+                                    <div class="statItem">
+                                        <span class="statLabel">Total Incidents:</span>
+                                        <span class="statValue"></span>
+                                    </div>
+
+                                    <div class="statItem">
+                                        <span class="statLabel">Critical Incidents:</span>
+                                        <span class="statValue"></span>
+                                    </div>
+
+                                    <div class="statItem">
+                                        <span class="statLabel">Amount of PoIs:</span>
+                                        <span class="statValue"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            `;
 
             break;
 
