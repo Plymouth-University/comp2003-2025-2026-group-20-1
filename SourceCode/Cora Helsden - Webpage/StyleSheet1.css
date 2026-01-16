@@ -6,11 +6,26 @@
 body {
     background-image: linear-gradient(to right, #3494E6, #EC6EAD);
     font-size: 16px;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#content {
+    width: 100%;
+    height: 100vh;
+    display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0;
+}
+
+.pageLayout {
     display: flex;
+    width: 100vw;
     height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 /* =============================================== */
@@ -104,4 +119,156 @@ h1{
 
 #loginBtn:hover, #registerBtn:hover{
     background: rgba(0,0,0,0.05);
+}
+
+/* =============================================== */
+/*                   MAIN PAGE                     */
+/* =============================================== */
+/*Taskbar*/
+
+.taskbar{
+    display: flex;
+    flex-direction: column;
+    border-right: 2px solid white;
+    padding: 16px 10px;
+    gap: 14px;
+}
+
+.iconBtn{
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    border: 2px solid white;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.iconBtn:hover{
+    background: rgba(255,255,255,0.15);
+}
+
+.taskbarSpaceImplementer{
+    flex: 1;
+}
+
+.accountBtn{
+    border-width: 5px;
+}
+
+/*Main Stuff*/
+
+.actualContent{
+    display:grid;
+    grid-template-rows: 160px 1fr;
+    gap: 16px;
+    padding: 16px 20px;
+}
+
+.statsPart{
+    border:2px solid white;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.mapPart{
+    border: 2px solid white;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =========================================== */
+/*                 SETTINGS PAGE               */
+/* =========================================== */
+
+.statsFullPage, .accountFullPage, .settingsFullPage {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.settingsContainer {
+    width: 100%;
+    height: 100%;
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.settingsHeader {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    border: 3px solid white;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.settingsSection {
+    border: 2px solid white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.sectionHeader {
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border: 2px solid white;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.statItem, .colourOption, .accessibilityOption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.statItem:last-child, .colourOption:last-child, .accessibilityOption:last-child {
+    border-bottom: none;
+}
+
+.statLabel {
+    font-size: 15px;
+}
+
+.statValue {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.colourPicker {
+    width: 40px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.selectInput {
+    padding: 8px 12px;
+    border: 2px solid white;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.1);
+    cursor: pointer;
+    font-size: 14px;
+    min-width: 150px;
+}
+
+.selectInput:hover {
+    background: rgba(255,255,255,0.2);
 }

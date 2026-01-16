@@ -235,9 +235,106 @@ function changePage(page) {
             document.title = "Main Page | Crossing Danger Analysis";
 
             contentPage.innerHTML = `
-                hello
+                <div class="pageLayout">
+                    <aside class="taskbar">
+                        <button class="iconBtn" id="homeIcon"></button>
+                        <button class="iconBtn" id="statsIcon"></button>
+                        <button class="iconBtn" id="settingsIcon"></button>
+
+                        <div class="taskbarSpaceImplementer"></div>
+
+                        <button class="iconBtn" id="accountIcon"></button>
+                    </aside>
+
+                    <section class="actualContent">
+                        <div class="statsPart">
+                            <p class="placeholderText"> Statistics will appear here when selected. </p>
+                        </div>
+
+                        <div class="mapPart">
+                            <p class="placeholderText"> Map loading... </p>
+                        </div>
+                    </section>
+                </div>
+
                 <p class="smallBtn" id="back">Back</p>
             `;
+            break;
+
+        case 'statspage':
+
+            break;
+
+        case 'settingspage':
+            document.title = "Settings Page | Crossing Danger Analysis";
+
+            contentPage.innerHTML = `
+                <div class="pageLayout">
+                    <aside class="taskbar">
+                        <button class="iconBtn" id="homeIcon"></button>
+                        <button class="iconBtn" id="statsIcon"></button>
+                        <button class="iconBtn" id="settingsIcon"></button>
+
+                        <div class="taskbarSpaceImplementer"></div>
+
+                        <button class="iconBtn" id="accountIcon"></button>
+                    </aside>
+
+                    <section class="actualContent" style="grid-template-rows: 1fr;">
+                        <div class="settingsFullPage">
+                            <div class="settingsContainer">
+                                <div class="settingsHeader"> SETTINGS </div>
+
+                                <div class="settingsSection">
+                                    <div class="sectionHeader"> COLOUR SCHEME </div>
+
+                                    <div class="colourOption">
+                                        <label>Danger Area:</label>
+                                        <input type="color" value="#C30010" class="colourPicker">
+                                    </div>
+
+                                    <div class="colourOption">
+                                        <label>Warning Area:</label>
+                                        <input type="color" value="#DAA520" class="colourPicker">
+                                    </div>
+
+                                    <div class="colourOption">
+                                        <label>Safe Area:</label>
+                                        <input type="color" value="#568203" class="colourPicker">
+                                    </div>
+                                </div>
+
+                                <div class="settingsSection">
+                                    <div class="sectionHeader">ACCESSIBILITY</div>
+
+                                    <div class="accessibilityOption">
+                                        <label>Text Size:</label>
+                                        <select class="selectInput">
+                                            <option>Small</option>
+                                            <option>Medium</option>
+                                            <option>Large</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="accessibilityOption">
+                                        <label>Colourblind Mode:</label>
+                                        <select class="selectInput">
+                                            <option>None</option>
+                                            <option>Deuteranopia</option>
+                                            <option>Protanopia</option>
+                                            <option>Tritanopia</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            `
+            break;
+
+        case 'accountpage':
+
             break;
 
     }
@@ -249,6 +346,10 @@ function changePage(page) {
 
     const guestButton = document.getElementById("GuestButton");
 
+    const homeButton = document.getElementById("homeIcon");
+    const statsButton = document.getElementById("statsIcon");
+    const settingsButton = document.getElementById("settingsIcon");
+    const accountButton = document.getElementById("accountIcon");
 
     // BUTTON ACTIONS
     if (loginButton) {
@@ -272,6 +373,30 @@ function changePage(page) {
     if (guestButton) {
         guestButton.addEventListener("click", () => {
             changePage("mainpage");
+        });
+    }
+
+    if (homeButton) {
+        homeButton.addEventListener("click", () => {
+            changePage("mainpage");
+        });
+    }
+
+    if (statsButton) {
+        statsButton.addEventListener("click", () => {
+            changePage("statspage");
+        });
+    }
+
+    if (settingsButton) {
+        settingsButton.addEventListener("click", () => {
+            changePage("settingspage");
+        });
+    }
+
+    if (accountButton) {
+        accountButton.addEventListener("click", () => {
+            changePage("accountpage");
         });
     }
 }
