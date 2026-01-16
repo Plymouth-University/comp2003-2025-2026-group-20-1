@@ -1,8 +1,18 @@
 let contentPage = document.getElementById('content')
 
+
+// DEFAULT SETTINGS
 let username = '';
 let email = '';
 let password = '';
+
+let userSettings = {
+    dangerColor: '#C30010',
+    warningColor: '#DAA520',
+    safeColor: '#568203',
+    textSize: 'Small',
+    colorblindMode: 'None'
+};
 
 // ============================================================
 //          PROOF OF CONCEPT LOGIN SYSTEM (!REPLACE!)
@@ -334,7 +344,29 @@ function changePage(page) {
             break;
 
         case 'accountpage':
+            document.title = "Account | Crossing Danger Analysis";
 
+            contentPage.innerHTML = `
+                <div class="pageLayout">
+                    <aside class="taskbar">
+                        <button class="iconBtn" id="homeIcon"></button>
+                        <button class="iconBtn" id="statsIcon"></button>
+                        <button class="iconBtn" id="settingsIcon"></button>
+
+                        <div class="taskbarSpaceImplementer"></div>
+
+                        <button class="iconBtn" id="accountIcon"></button>
+                    </aside>
+
+                    <section class="actualContent">
+                        <div class="accountFullPage">
+                            <p class="placeholderText"> Account settings will appear here! </p>
+                        </div>
+                    </section>
+
+                    <p class="smallBtn" id="back">Back</p>
+                </div>
+            `;
             break;
 
     }
