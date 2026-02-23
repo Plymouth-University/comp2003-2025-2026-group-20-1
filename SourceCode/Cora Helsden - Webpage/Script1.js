@@ -273,18 +273,16 @@ function changePage(page) {
                 <div class="pageLayout">
                     <aside class="taskbar">
                         <button class="iconBtn" id="homeIcon"></button>
-                        <button class="iconBtn" id="statsIcon"></button>
+                        <button class="iconBtn active" id="statsIcon"></button>
                         <button class="iconBtn" id="settingsIcon"></button>
-
                         <div class="taskbarSpaceImplementer"></div>
-
                         <button class="iconBtn" id="accountIcon"></button>
                     </aside>
 
-                    <section class="actualContent">
+                    <section class="actualContent fullPage">
                         <div class="statsFullPage">
-                            <div class="settingsContainer">
-                                <div class="settingsHeader">STATISTICS</div>
+                            <div class="fullPageContainer">
+                                <div class="pageHeader">STATISTICS</div>
 
                                 <div class="settingsSection">
                                     <div class="sectionHeader">CROSSING ANALYSIS</div>
@@ -345,17 +343,15 @@ function changePage(page) {
                     <aside class="taskbar">
                         <button class="iconBtn" id="homeIcon"></button>
                         <button class="iconBtn" id="statsIcon"></button>
-                        <button class="iconBtn" id="settingsIcon"></button>
-
+                        <button class="iconBtn active" id="settingsIcon"></button>
                         <div class="taskbarSpaceImplementer"></div>
-
                         <button class="iconBtn" id="accountIcon"></button>
                     </aside>
 
-                    <section class="actualContent" style="grid-template-rows: 1fr;">
-                        <div class="settingsFullPage">
+                    <section class="actualContent fullPage">
+                        <div class="fullPageContainer">
                             <div class="settingsContainer">
-                                <div class="settingsHeader"> SETTINGS </div>
+                                <div class="pageHeader"> SETTINGS </div>
 
                                 <div class="settingsSection">
                                     <div class="sectionHeader"> COLOUR SCHEME </div>
