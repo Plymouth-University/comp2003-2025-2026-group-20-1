@@ -413,16 +413,28 @@ function changePage(page) {
 
                         <div class="taskbarSpaceImplementer"></div>
 
-                        <button class="iconBtn" id="accountIcon"></button>
+                        <button class="iconBtn active" id="accountIcon"></button>
                     </aside>
 
-                    <section class="actualContent">
-                        <div class="accountFullPage">
-                            <p class="placeholderText"> Account settings will appear here! </p>
+                    <section class="actualContent fullpage">
+                        <div class="fullPageContainer">
+                            <div class="pageHeader">ACCOUNT</div>
+
+                            <div class="accountInfo">
+                                <div class="accountField">
+                                    <span class="accountLabel">Username:</span>
+                                </div>
+                                <div class="accountField">
+                                    <span class="accountLabel">Email:</span>
+                                </div>
+                                <div class="accountField">
+                                    <span class="accountLabel">Account Type:</span>
+                                </div>
+                            </div>
+
+                            <button class="btn logoutBtn" id="logoutBtn">Logout</button>
                         </div>
                     </section>
-
-                    <p class="smallBtn" id="back">Back</p>
                 </div>
             `;
             break;
@@ -440,6 +452,8 @@ function changePage(page) {
     const statsButton = document.getElementById("statsIcon");
     const settingsButton = document.getElementById("settingsIcon");
     const accountButton = document.getElementById("accountIcon");
+
+    const logoutButton = document.getElementById("logoutBtn");
 
     // BUTTON ACTIONS
     if (loginButton) {
@@ -488,6 +502,12 @@ function changePage(page) {
         accountButton.addEventListener("click", () => {
             changePage("accountpage");
         });
+    }
+
+    if (logoutButton) {
+        logoutButton.addEventListener("click", () => {
+            changePage("home");
+        })
     }
 }
 
