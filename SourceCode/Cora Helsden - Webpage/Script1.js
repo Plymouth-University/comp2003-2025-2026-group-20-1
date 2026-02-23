@@ -231,18 +231,31 @@ function changePage(page) {
             contentPage.innerHTML = `
                 <div class="pageLayout">
                     <aside class="taskbar">
-                        <button class="iconBtn" id="homeIcon"></button>
+                        <button class="iconBtn active" id="homeIcon"></button>
                         <button class="iconBtn" id="statsIcon"></button>
                         <button class="iconBtn" id="settingsIcon"></button>
-
                         <div class="taskbarSpaceImplementer"></div>
-
                         <button class="iconBtn" id="accountIcon"></button>
                     </aside>
 
-                    <section class="actualContent">
+                    <section class="actualContent homeGrid">
                         <div class="statsPart">
-                            <p class="placeholderText"> Statistics will appear here when selected. </p>
+                            <div class="statCard">
+                                <div class="statNumber">47</div>
+                                <div class="statLabel">Crossings</div>
+                            </div>
+                            <div class="statCard">
+                                <div class="statNumber">12</div>
+                                <div class="statLabel">Danger Zones</div>
+                            </div>
+                            <div class="statCard">
+                                <div class="statNumber">23</div>
+                                <div class="statLabel">Warning Zones</div>
+                            </div>
+                            <div class="statCard">
+                                <div class="statNumber">10</div>
+                                <div class="statLabel">Safe Zones</div>
+                            </div>
                         </div>
 
                         <div class="mapPart">

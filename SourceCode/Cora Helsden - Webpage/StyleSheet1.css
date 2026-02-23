@@ -129,57 +129,117 @@ input:focus {
 /* =============================================== */
 /*Taskbar*/
 
+.pageLayout {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
 .taskbar{
+    width: 80px;
+    background: white;
     display: flex;
     flex-direction: column;
-    border-right: 2px solid white;
-    padding: 16px 10px;
-    gap: 14px;
+    padding: 24px 16px;
+    gap: 12px;
+
 }
 
-.iconBtn{
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
-    border: 2px solid white;
-    background: none;
+.iconBtn {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    color: white;
     font-size: 20px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
-.iconBtn:hover{
-    background: rgba(255,255,255,0.15);
+.iconBtn:hover {
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
 }
 
-.taskbarSpaceImplementer{
+.iconBtn.active {
+    backdrop-filter: brightness(50%);
+}
+
+.taskbarSpaceImplementer {
     flex: 1;
-}
-
-.accountBtn{
-    border-width: 5px;
 }
 
 /*Main Stuff*/
 
-.actualContent{
-    display:grid;
-    grid-template-rows: 160px 1fr;
-    gap: 16px;
-    padding: 16px 20px;
+.actualContent {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    display: grid;
+    gap: 20px;
 }
 
-.statsPart{
-    border:2px solid white;
-    border-radius: 15px;
-    padding: 10px;
+.actualContent.homeGrid {
+    grid-template-rows: 180px 1fr;
+}
+
+.actualContent.fullPage {
+    grid-template-rows: 1fr;
+}
+
+.statsPart {
+    background: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+}
+
+.statCard {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    padding: 20px;
+    min-width: 160px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.statCard .statNumber {
+    font-size: 36px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.statCard .statLabel {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
 }
 
 .mapPart{
-    border: 2px solid white;
-    border-radius: 15px;
+    background: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 40px;
+}
+
+.placeholderText {
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 /* =========================================== */
