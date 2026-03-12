@@ -14,6 +14,40 @@ let userSettings = {
     colorblindMode: 'None'
 };
 
+const allStats = [
+    { id: 'crossings', label: 'Total Crossings Analysed', value: 47 },
+    { id: 'danger', label: 'Danger Zones Identified', value: 12 },
+    { id: 'warning', label: 'Warning Zones Identified', value: 23 },
+    { id: 'safe', label: 'Safe Zones Identified', value: 10 },
+    { id: 'incidents', label: 'Total Incidents', value: 4 },
+    { id: 'critical', label: 'Critical Incidents', value: 51 },
+    { id: 'pois', label: 'Amount of PoIs', value: 37 }
+];
+
+function initialiseSettings() {
+    if (!userSettings.selectedStats || !Array.isArray(userSettings.selectedStats)) {
+        userSettings.selectedStats = ['crossings', 'danger', 'warning', 'safe'];
+    }
+}
+
+function getSelectedStats() {
+    initialiseSettings();
+    return allStats.filter(stat => userSettings.selectedStats.includes(stat.id));
+}
+
+function toggleStatSelection(statId) {
+    initialiseSettings();
+    const index = userSettings.selectedStats.indexOf(statId);
+
+    if (index > -1) {
+        userSettings.selectedStats.splice(index, 1);
+    } else {
+        if (userSettings.selectedStats.length < 4) {
+            userSettings.selectedStats.push(statId);
+        }
+    }
+}
+
 // ============================================================
 //          PROOF OF CONCEPT LOGIN SYSTEM (!REPLACE!)
 // ============================================================
@@ -228,6 +262,8 @@ function changePage(page) {
         case 'mainpage':
             document.title = "Main Page | Crossing Danger Analysis";
 
+            const selectedStats = getSelectedStats();
+
             contentPage.innerHTML = `
                 <div class="pageLayout">
                     <aside class="taskbar">
@@ -240,22 +276,12 @@ function changePage(page) {
 
                     <section class="actualContent homeGrid">
                         <div class="statsPart">
-                            <div class="statCard">
-                                <div class="statNumber">47</div>
-                                <div class="statLabel">Crossings</div>
-                            </div>
-                            <div class="statCard">
-                                <div class="statNumber">12</div>
-                                <div class="statLabel">Danger Zones</div>
-                            </div>
-                            <div class="statCard">
-                                <div class="statNumber">23</div>
-                                <div class="statLabel">Warning Zones</div>
-                            </div>
-                            <div class="statCard">
-                                <div class="statNumber">10</div>
-                                <div class="statLabel">Safe Zones</div>
-                            </div>
+                            ${selectedStats.map(stat => `
+                                <div class="statCard">
+                                    <div class="statNumber">${stat.value}</div>
+                                    <div class="statLabel">${stat.label}</div>
+                                </div>
+                            `).join('')}
                         </div>
 
                         <div class="mapPart">
@@ -284,54 +310,68 @@ function changePage(page) {
                             <div class="fullPageContainer">
                                 <div class="pageHeader">STATISTICS</div>
 
-                                <div class="settingsSection">
-                                    <div class="sectionHeader">CROSSING ANALYSIS</div>
-
-                                    <div class="statItem">
-                                        <span class="statLabel">Totale Crossings Analysed:</span>
-                                        <span class="statValue"></span>
-                                    </div>
-
-                                    <div class="statItem">
-                                        <span class="statLabel">Danger Zones Identified:</span>
-                                        <span class="statValue"></span>
-                                    </div>
-
-                                    <div class="statItem">
-                                        <span class="statLabel">Warning Zones Identified:</span>
-                                        <span class="statValue"></span>
-                                    </div>
-
-                                    <div class="statItem">
-                                        <span class="statLabel">Safe Zones Identified:</span>
-                                        <span class="statValue"></span>
-                                    </div>
-
-                                </div>
+                                <div id="statsMessageContainer"></div>
 
                                 <div class="settingsSection">
-                                    <div class="sectionHeader">INCIDENTS</div>
+                                    <div class="sectionHeader">SELECT FOUR STATISTICS FOR DASHBOARD</div>
+                                    <p class="statsNotifier">Click on any statistics to add or remove it. You must select exactly four.</p>
 
-                                    <div class="statItem">
-                                        <span class="statLabel">Total Incidents:</span>
-                                        <span class="statValue"></span>
-                                    </div>
+                                    ${allStats.map(stat => {
+                                        const isSelected = userSettings.selectedStats.includes(stat.id);
+                                        return `
+                                            <div class="statItem selectable ${isSelected ? 'selected' : ''}" data-stat-id="${stat.id}">
+                                                <div class="statContent">
+                                                    <span class="statLabel">${stat.label}:</span>
+                                                    <span class="statValue">${stat.value}:</span>
+                                                </div>
+                                                <div class="statCheckbox"></div>
+                                            </div>
+                                        `
+                                    }).join('')}
 
-                                    <div class="statItem">
-                                        <span class="statLabel">Critical Incidents:</span>
-                                        <span class="statValue"></span>
-                                    </div>
-
-                                    <div class="statItem">
-                                        <span class="statLabel">Amount of PoIs:</span>
-                                        <span class="statValue"></span>
-                                    </div>
+                                    <button class="btn saveStatsBtn" id="saveStatsBtn">Save Dashboard Selection</button>
                                 </div>
                             </div>
                         </div>
                     </section>
                 </div>
             `;
+
+            // Add click listener to stats
+            document.querySelectorAll('.statItem.selectable').forEach(item => {
+                item.addEventListener('click', () => {
+                    const statId = item.dataset.statId;
+                    toggleStatSelection(statId);
+
+                    // Update UI
+                    if (userSettings.selectedStats.includes(statId)) {
+                        item.classList.add('selected');
+                    } else {
+                        item.classList.remove('selected');
+                    }
+
+                    const messageContainer = document.getElementById('statsMessageContainer');
+                    messageContainer.innerHTML = '';
+                });
+            });
+
+            document.getElementById('saveStatsBtn').addEventListener('click', () => {
+                const messageContainer = document.getElementById('statsMessageContainer');
+
+                if (userSettings.selectedStats.length !== 4) {
+                    messageContainer.innerHTML = `
+                        <div class="statsMessage error">
+                            Please select exactly FOUR statistics.
+                        </div>
+                    `;
+                } else {
+                    messageContainer.innerHTML = `
+                        <div class = "statsMessage success">
+                            Dashboard updated successfully!
+                        </div>
+                    `;
+                }
+            });
 
             break;
 
@@ -511,4 +551,5 @@ function changePage(page) {
     }
 }
 
+initialiseSettings();
 changePage('home');

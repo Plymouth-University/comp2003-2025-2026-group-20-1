@@ -283,7 +283,7 @@ input:focus {
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 1.5px;
-    color: black;
+    color: white;
     padding: 12px 20px;
     margin-bottom: 20px;
     background: rgba(255, 255, 255, 0.15);
@@ -291,12 +291,54 @@ input:focus {
     border-radius: 10px;
 }
 
-.statItem, .colorOption, .accessibilityOption {
+.statItem, .colourOption, .accessibilityOption {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 16px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.statItem.selectable {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.statItem.selectable:hover{
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.statItem.selectable.selected{
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.statContent {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex: 1;
+    justify-content: space-between;
+    padding-right: 16px;
+}
+
+.statCheckbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    background: transparent;
+    flex-shrink: 0;
+}
+
+.statItem.selectable.selected .statCheckbox {
+    background: white;
+    border-color: white;
 }
 
 .statLabel {
@@ -306,7 +348,7 @@ input:focus {
 }
 
 .statValue {
-    color: black;
+    color: white;
     font-size: 22px;
     font-weight: 700;
 }
@@ -334,7 +376,7 @@ input:focus {
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.15);
     border: 2px solid rgba(255, 255, 255, 0.4);
-    color: black;
+    color: white;
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
@@ -348,7 +390,34 @@ input:focus {
 
 .selectInput option {
     background: #667eea;
-    color: black;
+    color: white;
+}
+
+.statsNotifier {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.statsMessage {
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.statsMessage.error {
+    background: rgba(229, 62, 62, 0.3);
+    border: 1px solid rgba(229, 62, 62, 0.6);
+    color: white;
+}
+
+.statsMessage.success {
+    background: rgba(72, 187, 120, 0.3);
+    border: 1px solid rgba(72, 187, 120, 0.6);
+    color: white;
 }
 
 /* =========================================== */
